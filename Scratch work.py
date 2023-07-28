@@ -25,3 +25,26 @@ print("Time: ", time, 'min')
 print("Distance: ", distance, 'miles')
 print("Elevation: ", elevation, 'feet')
 
+# """Example of Fib sequence"""
+def fib(n):
+    """Compute the nth Fibonacci number, for n >= 2."""
+    pred, curr = 0, 1   # Fibonacci numbers 1 and 2
+    k = 2               # Which Fib number is curr?
+    while k < n:
+        pred, curr = curr, pred + curr
+        k = k + 1
+    return curr
+
+positive = -9
+negative = -12
+while negative:
+   if positive:
+       print(negative)
+   positive += 3
+   negative += 3
+
+def sum_digits(x):
+    length = x
+    while length > 0:
+        x = (x-(x-1))
+        length - 1

@@ -5,8 +5,6 @@
 
 
 
-
-
 # Q2: A Plus Abs B
 from operator import add, sub
 
@@ -50,6 +48,7 @@ print(two_of_three(1, 2, 3))
 
 # Q4: Largest Factor
 def largest_factor(x):
+    
     # Return the largest factor of x that is smaller than x.
 
     # >>> largest_factor(15) # factors are 1, 3, 5
@@ -58,9 +57,21 @@ def largest_factor(x):
     # 40
     # >>> largest_factor(13) # factor is 1 since 13 is prime
     # 1
-    x # (placeholder)
+
+    num, index = x, 0
+    while index < x:
+        if (x % num == 0) and (x != num):
+            index += (x + 1)
+            return num
+        else:
+            num -= 1
+    return num
+
         
 # My answer for Project Euler number 3, which also works for this HW question 
+# but is overkill due to the nature of this problem
+
+
 def primeFactors(x):
     index = 2
     primes = []
@@ -72,40 +83,34 @@ def primeFactors(x):
             index += 1
     return primes
 
-# Q5: If Function vs Statement
 
-# Q6: 
+
+# Q5: Lost my original answer, will come back to this one one day! 
+#    (already answered the original question in SICP anyways)
+
+
+
+# Q6: Hailstone
 def hailstone(x):
-    n = 1
+    sum = 1
     while x != 1:
         print(x)
         if ((x % 2) == 0):
-            x = x / 2
+            x = x // 2
+            sum += 1
         else:
             x = (x * 3) + 1
-    print(x)
-    return n
+            sum += 1
+    print(1)
+    return "With a length of " + str(sum)
 
-"""Example of Fib sequence"""
-def fib(n):
-    """Compute the nth Fibonacci number, for n >= 2."""
-    pred, curr = 0, 1   # Fibonacci numbers 1 and 2
-    k = 2               # Which Fib number is curr?
-    while k < n:
-        pred, curr = curr, pred + curr
-        k = k + 1
-    return curr
+# hailstone(10)
+# 10
+# 5
+# 16
+# 8
+# 4
+# 2
+# 1
 
-positive = -9
-negative = -12
-while negative:
-   if positive:
-       print(negative)
-   positive += 3
-   negative += 3
-
-def sum_digits(x):
-    length = x
-    while length > 0:
-        x = (x-(x-1))
-        length - 1
+# Longest Hailstone is 77031 for numbers <100,000 with a length of 351 (https://rosettacode.org/wiki/Hailstone_sequence)
