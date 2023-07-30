@@ -48,3 +48,24 @@ def sum_digits(x):
     while length > 0:
         x = (x-(x-1))
         length - 1
+
+# Lab 02 - Q2
+
+def cake():
+    print('beets')
+    def pie():
+        print('sweets')
+        return 'cake'
+    return pie
+
+chocolate = cake()
+
+more_chocolate, more_cake = chocolate(), cake
+
+def snake(x, y):
+    if cake == more_cake:
+        return chocolate
+    else:
+        return x + y
+
+snake(10, 20)
