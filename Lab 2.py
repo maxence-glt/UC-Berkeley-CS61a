@@ -25,9 +25,52 @@ def count_cond(condition):
 
 # Q5: Both Paths
 def both_paths(sofar="S"):
-    print(sofar),
+    print(sofar)
     def left():
-        print("L")
+        print(sofar)
+        return both_paths(sofar="L")
     def right():
-        print("R")   
-    return left, right      #  Stuck on this one
+        print(sofar)
+        return both_paths(sofar="R") 
+    return left, right
+
+
+
+
+
+# Q8: Composite Identity Function
+def composite_identity(f, g):
+    def compose(x):
+        if (f(g(x)))  == (g(f(x))):
+            return True
+        else:
+            return False
+    return compose
+
+
+
+
+
+# Q9: I Heard You Liked Functions...
+def cycle(f1, f2, f3):
+    def my_cycle(i):
+        def identity(b):
+            total, num = 1, 1
+            for a in range(0, i + 1):
+                if a == 0:
+                    total = total * b
+                else:
+                    if num == 1:
+                        total = f1(total)
+                        num += 1
+                    elif num == 2:
+                        total = f2(total)
+                        num += 1
+                    elif num == 3:
+                        total = f3(total)
+                        num = 1
+            return total
+        return identity
+    return my_cycle
+
+# This lab gave me a migraine right after... lol
