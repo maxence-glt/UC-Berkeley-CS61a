@@ -52,5 +52,9 @@ def product_using_accumulate(n, f):
 
 # Q3: Make Repeater
 def make_repeater(h, n):
-     
-
+    def make_repeater2(b):
+        total = b
+        for x in range(1, n + 1):
+            total = h(total)
+        return total
+    return make_repeater2
