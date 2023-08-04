@@ -1,5 +1,5 @@
-# Lab 2 of UC Berkeley's cs61a spring 2020 course
-# https://inst.eecs.berkeley.edu/~cs61a/sp20/lab/lab02/
+# Lab 4 of UC Berkeley's cs61a spring 2020 course
+# https://inst.eecs.berkeley.edu/~cs61a/sp20/lab/lab04/#q5
 
 # Q1: Skip Add
 def skip_add(n):
