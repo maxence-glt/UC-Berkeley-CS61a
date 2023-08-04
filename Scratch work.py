@@ -69,3 +69,21 @@ def snake(x, y):
         return x + y
 
 snake(10, 20)
+
+
+# Q6: Pascal's Triangle
+def pascal(row, column):
+    if column == 0 or row == 0:
+        return 1
+    else:
+        return pascal()
+    
+# # """Q7: Double Eights"""
+def double_eights(n):
+    n, total = n
+    def helper(n):
+        if n == 0:
+            return 0
+        if n % 10 == 8:
+            return (n // 10)
+    helper(n)
