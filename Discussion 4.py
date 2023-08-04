@@ -51,9 +51,7 @@ def check_hole_number(n):
 
 
 
-mountain = ((n % 1000 // 100) < (n % 100 // 10) > (n % 10))
-upwards = ((n % 10) > ((n // 10) % 10) > n // 100)
-downwards = ((n % 10) < ((n // 10) % 10) < n // 100)
+
 
 # 1. (b) 
 def check_mountain_number(n):
