@@ -42,12 +42,12 @@ def paths(m, n):
 
 
 # Q5: Maximum Subsequence
-def max_subseq(n, l):
-    if l <= 0:
-        return 0
-    elif l == 1:
-        return int(max(list(str(n))))
-    else:
-        return max_subseq(n, l - 1) + max_subseq(n, l - 2)
+# def max_subseq(n, l):
+#     if l <= 0:
+#         return 0
+#     elif l == 1:
+#         return int(max(list(str(n))))
+#     else:
+#         return max_subseq(n, l - 1) + max_subseq(n, l - 2)
 
-
+# Stuck on this one, will come back
