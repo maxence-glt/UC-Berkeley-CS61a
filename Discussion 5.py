@@ -55,6 +55,7 @@ def square_trees(t):
 
 
 
+
 numbers = tree(1, [tree(2, [tree(3),tree(4)]),tree(5,[tree(6,[tree(7)]),tree(8)])])   
 numbers = [1, [2, [3], [4]], [5, [6, [7]], [8]]]
 
@@ -66,11 +67,55 @@ numbers = [1, [2, [3], [4]], [5, [6, [7]], [8]]]
 def find_path(tree, x):
     if label(tree) == x:
         return [label(tree)]
-    paths = [find_path(b, x) for b in branches(t)]
+    path = [find_path(b, x) for b in branches(t)]
         
-
+# Kinda lost on this one
     
 
 
 
 t = tree(2, [tree(7, [tree(3), tree(6, [tree(5), tree(11)])] ), tree(15)])
+
+
+
+
+
+#2.2
+def add_this_many(x, el, lst):
+    [lst.append(el) for y in lst[::-1] if y == x]
+
+
+
+
+
+# 2.3
+def group_by(s, fn):
+    dict, placeholder = {}, []
+    for x in range(0, ((fn(max(s) + 1)) + 1)):
+        placeholder = []
+        for y in s:
+            if fn(y) == x:
+                placeholder.append(y)
+        if placeholder != []:
+            dict[x] = placeholder
+    return dict
+
+
+
+
+
+# 1(a)
+def partition_options(total, biggest):
+    s
+
+
+def primeFactors(x):
+    index = 2
+    primes = []
+    while index <= x:
+        if x % index == 0:
+            primes.append(index)
+            x = x / index
+        else:
+            index += 1
+    return primes
