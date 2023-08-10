@@ -106,16 +106,15 @@ def group_by(s, fn):
 
 # 1(a)
 def partition_options(total, biggest):
-    s
+    if total == biggest:
+        return [biggest]
+# stuck on this one as well, I hate how I'm forced to use their code format :(
 
 
-def primeFactors(x):
-    index = 2
-    primes = []
-    while index <= x:
-        if x % index == 0:
-            primes.append(index)
-            x = x / index
-        else:
-            index += 1
-    return primes
+
+
+
+def min_elements(T, lst):
+    if T == 0:
+        return 0
+    return min([1 + min_elements(T - i, lst) for i in lst if T - i >= 0])
