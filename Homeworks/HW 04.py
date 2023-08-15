@@ -149,7 +149,56 @@ def make_joint(withdraw, old_pass, new_pass):
     def withdraw2(amount, password):
         if password == old_pass or password == new_pass:
             return withdraw(amount, old_pass)
+        return withdraw(0, password)
     if withdraw(0, old_pass) == "Incorrect password":
         return "Incorrect password"
     else: return withdraw2
-    
+
+
+
+
+
+# Extra Questions
+
+
+
+
+
+# Q7: Interval Abstraction
+def interval(a, b):
+    return [a, b]
+
+def lower_bound(x):
+    return x[0]
+
+def upper_bound(x):
+    return x[1]
+
+def mul_interval(x, y):
+    p1 = lower_bound[x] * lower_bound[y]
+    p2 = lower_bound[x] * upper_bound[y]
+    p3 = upper_bound[x] * lower_bound[x]
+    p4 = upper_bound[x] * upper_bound[y]
+    return interval([min(p1, p2, p3, p4), max(p1, p2, p3, p4)])
+
+
+
+
+
+# Q8: Sub Interval
+def sub_interval(x, y):
+    p1 = lower_bound[x] - lower_bound[y]
+    p2 = lower_bound[x] - upper_bound[y]
+    p3 = upper_bound[x] - lower_bound[x]
+    p4 = upper_bound[x] - upper_bound[y]
+    return interval([min(p1, p2, p3, p4), max(p1, p2, p3, p4)])
+
+
+
+
+
+# Q9: Div Interval
+def div_interval(x, y):
+    assert lower_bound(x) > 0 and lower_bound(y) > 0, "No interval that spans 0 can be used as a divisor!"
+    reciprocal_y = interval(1/upper_bound(y), 1/lower_bound(y))
+    return mul_interval(x, reciprocal_y)
