@@ -39,8 +39,6 @@ def scale(it, multiplier):
 
 
 
-m = scale2([1, 5, 2], 5)
-
 print(list(m))
 
 # Q4: Hailstone
