@@ -20,13 +20,6 @@ def pingpong(n):
             return i * -1 + helper (n, i * -1, z + 1)
         else: 
             return i + helper(n, i, z + 1)
-    def num_sevens(x):
-        if x == 0:
-            return 0
-        if x % 10 == 7:
-            return num_sevens(x // 10) + 1
-        else:
-            return num_sevens(x // 10)
     return helper(n, i, 0)
 
 # Q3: Count change
