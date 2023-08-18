@@ -39,8 +39,6 @@ def scale(it, multiplier):
 
 
 
-print(list(m))
-
 # Q4: Hailstone
 def hailstone(n):
     while n != 1:
