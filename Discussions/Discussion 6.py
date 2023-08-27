@@ -72,3 +72,16 @@ result = merge(a, b)
 
 print([next(result) for _ in range(10)])
 
+
+
+
+
+# 2.2
+def generate_subsets():
+    x = [[]]
+    n = 1
+    while True:
+        yield x
+        x = x + [s + [n] for s in x]
+        n += 1
+
