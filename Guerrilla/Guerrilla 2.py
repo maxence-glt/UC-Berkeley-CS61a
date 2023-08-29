@@ -173,4 +173,25 @@ def black_hole(seq, trap):
 
 
 
-# 
+# 5.7 
+def gen_inf(list):
+    for x in list:
+        list.append(x)
+        yield x
+
+
+
+
+
+# 5.8
+def filter(iterable, fn):
+    for x in iterable:
+        if fn(x):
+            yield x
+
+
+
+
+
+# 5.9
+# You could iterate on command, "lazy" eval
