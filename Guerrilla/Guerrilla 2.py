@@ -162,16 +162,15 @@ def generate_constant(x):
 # 5.5
 def black_hole(seq, trap):
     seq = iter(seq)
-    while True:
-        nxt = next(seq)
-        if nxt == trap:
+    for x in seq:
+        if x == trap:
                 while True:
                     yield trap
         else:
-            yield nxt
+            yield x
 
-trapped = black_hole([1, 2, 3], 2)
 
-print([next(trapped) for _ in range(6)])
 
-# print(list(black_hole(range(5), 7)))
+
+
+# 
