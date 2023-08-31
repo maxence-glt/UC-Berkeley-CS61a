@@ -69,7 +69,6 @@ def is_leaf(tree):
 
 # 3.2
 def is_mini_heap(tree):
-    print(tree)
     for x in branches(tree):
         if (label(tree) > label(x)) or (not is_mini_heap(x)):
             return False
@@ -80,9 +79,9 @@ def is_mini_heap(tree):
 
 
 # 3.3
-def largest_product_path(tree):
-    if is_leaf(tree): return label(tree)
-    return max(label(tree) * largest_product_path(x) for x in branches(tree))
+def largest_product_path(t):
+    if is_leaf(t): return label(t)
+    else: return max(label(t) * largest_product_path(x) for x in branches(t))
     
 
 
@@ -93,10 +92,13 @@ def max_tree(t):
     if is_leaf(t):
         return tree(t)
     else:
-        new_branches = max 
+        new_branches = [max_tree(x) for x in branches(t)]
+        new_label = max([label(t)] + [label(x) for x in new_branches]) 
+        return tree(new_branches, new_label)
 
 
 t = (tree(1, [tree(5, [tree(7)]),tree(3,[tree(9),tree(4)]),tree(6)]))
+t2 = tree(3, [tree(7, [tree(2)]), tree(8, [tree(1)]), tree(4)])
 
 
 
@@ -195,3 +197,60 @@ def filter(iterable, fn):
 
 # 5.9
 # You could iterate on command, "lazy" eval
+
+
+
+
+
+# 5.10
+
+
+
+
+
+# 5.11
+def make_digit_getter(n):
+    total = 0
+    def helper():
+        nonlocal total, n
+        if n > 0:
+            x = n % 10
+            n = n // 10
+            total += x
+            return x
+        return total
+    return helper
+
+
+
+def allpath(t, f, g, s):
+    if is_leaf(t):
+        return one(f(g(s, label(t))))
+    return sum([allpath(x, f, g, g(s, label(t))) for x in branches(t)])
+    
+def one(b):
+    if b: return 1
+    else: return 0
+
+
+t = tree(1, [tree(2), tree(3, [tree(4), tree(5)])])
+even = lambda x: x % 2 == 0
+print(allpath(t, even, max, 0))
+
+def max_tree(t):
+    if is_leaf(t): return label(t)
+    else:
+        new_branch = [x for x in max(tree(branches(t)))]
+        new_node = max(new_branch)
+        for x in t:
+            x = new_branch
+
+
+t3 = tree(1, [tree(2), tree(3, [tree(4), tree(5)])])
+print(max_tree(t3))
+
+def max_tree(t):
+    if is_leaf(t): return label(t)
+    else:
+        new_branch = [max_tree(x) for x in branches(t)]
+        return new_branch
