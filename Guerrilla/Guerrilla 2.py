@@ -90,11 +90,11 @@ def largest_product_path(t):
 # 3.4
 def max_tree(t):
     if is_leaf(t):
-        return tree(t)
+        return tree(label(t))
     else:
         new_branches = [max_tree(x) for x in branches(t)]
-        new_label = max([label(t)] + [label(x) for x in new_branches]) 
-        return tree(new_branches, new_label)
+        new_label = max([label(t)] + [label(z) for z in new_branches]) 
+        return tree(new_label, new_branches)
 
 
 t = (tree(1, [tree(5, [tree(7)]),tree(3,[tree(9),tree(4)]),tree(6)]))
