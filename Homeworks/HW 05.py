@@ -73,7 +73,7 @@ def tree(label, branches = []):
     for b in branches:
         assert is_tree(b), 'branches must be trees'
     return [label] + list(branches)
-    
+
 def is_tree(tree):
     if type(tree) != list or len(tree) < 1:
         return False
@@ -135,3 +135,54 @@ print(generate_paths(t1, 6))
 
 
 # Q5: Is BST
+def is_bst(t):
+    x = branches(t)
+    if is_leaf(t):
+        return True
+    for x in branches(t):
+        if x[0] <= label(t): pass
+
+        if x > label: pass
+
+        else: return False
+
+t1 = tree(6, [tree(2, [tree(1), tree(4)]), tree(7, [tree(7), tree(8)])])
+
+
+
+
+
+# Q6: Mint
+class Mint:
+    current_year = 2020
+
+    def __init__(self):
+        self.update()
+        
+    def create(self, kind):
+        return kind(self.year)
+        
+    def update(self):
+        self.year = self.current_year
+        return self.year
+
+
+class Coin:
+    def __init__(self, year):
+        self.year = year
+
+    def worth(self):
+        if Mint.current_year == self.year: return self.cents
+        return self.cents + ((Mint.current_year - self.year) - 50)
+
+class Nickel(Coin):
+    cents = 5
+
+class Dime(Coin):
+    cents = 10       
+
+
+
+
+
+# Q7: Remove All
