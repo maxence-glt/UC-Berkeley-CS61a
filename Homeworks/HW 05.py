@@ -27,3 +27,63 @@ class VendingMachine:
             if self.balance == 0:
                 return f"Here is your {self.name}."
             return f"Here is your {self.name} and ${self.change} change."
+        
+
+
+
+
+# Q2: Preorder
+# My first try which I feel like I cheated due to using isinstance, set, list const, and stuff
+# that they obviously wouldn't want me using
+def preorder(t):
+    tot = []
+    def helper(x):
+        total = []
+        if is_leaf(x):
+            return label(x)
+        else:
+            for z in branches(x):
+                total += [label(x), helper(z)]
+            return total
+    tot += helper(t)
+    def order(x):
+        if not isinstance(x, list):
+            return [x]
+        return [i for z in x for i in order(z)]
+    tot = order(tot)
+    return list(set(tot))
+
+
+
+
+
+# Trial #2
+def preorder(t):
+    pass
+
+
+def tree(label, branches = []):
+    for b in branches:
+        assert is_tree(b), 'branches must be trees'
+    return [label] + list(branches)
+    
+def is_tree(tree):
+    if type(tree) != list or len(tree) < 1:
+        return False
+    for b in branches(tree):
+        if not is_tree(b):
+            return False
+    return True
+
+def label(tree):
+    return tree[0]
+
+def branches(tree):
+    return tree[1:]
+
+def is_leaf(tree):
+    return not branches(tree)
+
+numbers = tree(1, [tree(2), tree(3, [tree(4), tree(5)]), tree(6, [tree(7)])])
+print(preorder(numbers))
+print(preorder(tree(2, [tree(4, [tree(6)])])))
