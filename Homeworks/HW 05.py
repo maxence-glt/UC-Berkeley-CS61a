@@ -59,7 +59,14 @@ def preorder(t):
 
 # Trial #2
 def preorder(t):
-    pass
+    total = []
+    if is_leaf(t):
+        return [label(t)]
+    else:
+        total += [label(t)]
+        for x in branches(t):
+            total += preorder(x)
+        return total
 
 
 def tree(label, branches = []):
@@ -84,6 +91,47 @@ def branches(tree):
 def is_leaf(tree):
     return not branches(tree)
 
-numbers = tree(1, [tree(2), tree(3, [tree(4), tree(5)]), tree(6, [tree(7)])])
-print(preorder(numbers))
-print(preorder(tree(2, [tree(4, [tree(6)])])))
+# numbers = tree(1, [tree(2), tree(3, [tree(4), tree(5)]), tree(6, [tree(7)])])
+# print(preorder(numbers))
+# print(preorder(tree(2, [tree(4, [tree(6)])])))
+
+
+
+
+
+# Q3: Store Digits
+def store_digits(n):
+    if not is_link(n):
+        return link(n)
+    else: 
+        return link(n // (10 ** (len(str(n)) - 1)), store_digits(n % (10 ** (len(str(n)) - 1))))
+
+
+# I don't have the linked list data structure so I can't really do this one
+
+
+
+
+
+# Q4: Generate Paths
+def generate_paths(t, value):
+    total = []
+    if label(t) == value:
+        return [label(t)]
+    if is_leaf(t): return []
+    else:
+        total += [label(t)]
+        for x in branches(t):
+            total += generate_paths(x, value)
+        return total
+
+t1 = tree(1, [tree(2, [tree(3), tree(4, [tree(6)]), tree(5)]), tree(5)])
+print(generate_paths(t1, 6))
+
+#TODO Q4
+
+
+
+
+
+# Q5: Is BST
