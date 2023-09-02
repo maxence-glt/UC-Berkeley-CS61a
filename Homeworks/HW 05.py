@@ -100,13 +100,6 @@ def is_leaf(tree):
 
 
 # Q3: Store Digits
-def store_digits(n):
-    if not is_Link(n):
-        return Link(n, Link.empty)
-    else: 
-        return Link(n // (10 ** (len(str(n)) - 1)), store_digits(n % (10 ** (len(str(n)) - 1))))
-
-# linked list class
 class Link:
     empty = ()
     def __init__(self, first, rest=empty):
@@ -133,6 +126,15 @@ class Link:
     def second(self, value):
         self.rest.first = value
 
+def store_digits(n):
+    if n // 10 == 0:
+        return Link(n)
+    else: 
+        return Link(n // (10 ** (len(str(n)) - 1)), store_digits(n % (10 ** (len(str(n)) - 1))))
+print(store_digits(2345))
+
+
+
 
 
 # Q4: Generate Paths
@@ -148,7 +150,7 @@ def generate_paths(t, value):
         return total
 
 t1 = tree(1, [tree(2, [tree(3), tree(4, [tree(6)]), tree(5)]), tree(5)])
-print(generate_paths(t1, 6))
+# print(generate_paths(t1, 6))
 
 #TODO Q4
 
