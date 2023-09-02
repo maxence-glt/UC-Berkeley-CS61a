@@ -1,4 +1,4 @@
-# Lab 1 of UC Berkeley's cs61a spring 2020 course
+# Lab 6 of UC Berkeley's cs61a spring 2020 course
 # https://inst.eecs.berkeley.edu/~cs61a/sp20/lab/lab01/
 
 # Q1: Make Adder Increasing
