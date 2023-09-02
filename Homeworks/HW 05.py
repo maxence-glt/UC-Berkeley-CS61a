@@ -101,15 +101,37 @@ def is_leaf(tree):
 
 # Q3: Store Digits
 def store_digits(n):
-    if not is_link(n):
-        return link(n)
+    if not is_Link(n):
+        return Link(n, Link.empty)
     else: 
-        return link(n // (10 ** (len(str(n)) - 1)), store_digits(n % (10 ** (len(str(n)) - 1))))
+        return Link(n // (10 ** (len(str(n)) - 1)), store_digits(n % (10 ** (len(str(n)) - 1))))
 
-
-# I don't have the linked list data structure so I can't really do this one
-
-
+# linked list class
+class Link:
+    empty = ()
+    def __init__(self, first, rest=empty):
+        assert rest is Link.empty or isinstance(rest, Link)
+        self.first = first
+        self.rest = rest
+    def __getitem__(self, i):
+        if i == 0:
+            return self.first
+        else:
+            return self.rest[i-1]
+    def __len__(self):
+        return 1 + len(self.rest)
+    def __repr__(self):
+        if self.rest:
+            rest_str = ", " + repr(self.rest)
+        else:
+            rest_str = " "
+        return f"Link({self.first}{rest_str})"
+    @property
+    def second(self):
+        return self.rest.first
+    @second.setter
+    def second(self, value):
+        self.rest.first = value
 
 
 
