@@ -1,6 +1,62 @@
 # HW05 of UC Berkeley's cs61a spring 2020 course
 # https://inst.eecs.berkeley.edu/~cs61a/sp20/hw/hw05/
 
+# Tree and Link Class / Funcs
+class Link:
+    empty = ()
+    def __init__(self, first, rest=empty):
+        assert rest is Link.empty or isinstance(rest, Link)
+        self.first = first
+        self.rest = rest
+    def __getitem__(self, i):
+        if i == 0:
+            return self.first
+        else:
+            return self.rest[i-1]
+    def __len__(self):
+        return 1 + len(self.rest)
+    def __repr__(self):
+        if self.rest is not Link.empty:
+            rest_repr = ', ' + repr(self.rest)
+        else:
+            rest_repr = ''
+        return 'Link(' + repr(self.first) + rest_repr + ')'
+    def __str__(self):
+        string = '<'
+        while self.rest is not Link.empty:
+            string += str(self.first) + ' '
+            self = self.rest
+        return string + str(self.first) + '>'
+    @property
+    def second(self):
+        return self.rest.first
+    @second.setter
+    def second(self, value):
+        self.rest.first = value
+
+def tree(label, branches = []):
+    for b in branches:
+        assert is_tree(b), 'branches must be trees'
+    return [label] + list(branches)
+
+def is_tree(tree):
+    if type(tree) != list or len(tree) < 1:
+        return False
+    for b in branches(tree):
+        if not is_tree(b):
+            return False
+    return True
+
+def label(tree):
+    return tree[0]
+
+def branches(tree):
+    return tree[1:]
+
+def is_leaf(tree):
+    return not branches(tree)
+
+
 # Q1: Vending Machine
 class VendingMachine:
     def __init__(self, name, cost):
@@ -69,27 +125,7 @@ def preorder(t):
         return total
 
 
-def tree(label, branches = []):
-    for b in branches:
-        assert is_tree(b), 'branches must be trees'
-    return [label] + list(branches)
 
-def is_tree(tree):
-    if type(tree) != list or len(tree) < 1:
-        return False
-    for b in branches(tree):
-        if not is_tree(b):
-            return False
-    return True
-
-def label(tree):
-    return tree[0]
-
-def branches(tree):
-    return tree[1:]
-
-def is_leaf(tree):
-    return not branches(tree)
 
 # numbers = tree(1, [tree(2), tree(3, [tree(4), tree(5)]), tree(6, [tree(7)])])
 # print(preorder(numbers))
@@ -100,38 +136,13 @@ def is_leaf(tree):
 
 
 # Q3: Store Digits
-class Link:
-    empty = ()
-    def __init__(self, first, rest=empty):
-        assert rest is Link.empty or isinstance(rest, Link)
-        self.first = first
-        self.rest = rest
-    def __getitem__(self, i):
-        if i == 0:
-            return self.first
-        else:
-            return self.rest[i-1]
-    def __len__(self):
-        return 1 + len(self.rest)
-    def __repr__(self):
-        if self.rest:
-            rest_str = ", " + repr(self.rest)
-        else:
-            rest_str = " "
-        return f"Link({self.first}{rest_str})"
-    @property
-    def second(self):
-        return self.rest.first
-    @second.setter
-    def second(self, value):
-        self.rest.first = value
-
 def store_digits(n):
     if n // 10 == 0:
         return Link(n)
     else: 
         return Link(n // (10 ** (len(str(n)) - 1)), store_digits(n % (10 ** (len(str(n)) - 1))))
-print(store_digits(2345))
+
+# print(store_digits(2345))
 
 
 
@@ -190,7 +201,6 @@ class Mint:
         self.year = self.current_year
         return self.year
 
-
 class Coin:
     def __init__(self, year):
         self.year = year
@@ -210,3 +220,20 @@ class Dime(Coin):
 
 
 # Q7: Remove All
+def remove_all(link, value):
+    while link.rest != Link.empty and link.rest.first == value:
+        link.rest = link.rest.rest
+    if link.rest != Link.empty:
+        remove_all(link.rest, value)
+
+
+
+
+
+# Q8: Deep map
+def deep_map(f, link):
+    for x in link:
+        x = f(x)
+        
+    
+    
