@@ -53,4 +53,65 @@ class Tree:
 
 # Magic: The Lambda-ing
 # Q2: Making Cards
+class Card:
+    cardtype = 'Staff'
 
+    def __init__(self, name, attack, defense):
+        self.name = name
+        self.attack = attack
+        self.defense = defense
+
+    def power(self, other_card):
+        return (self.attack - (other_card.defense / 2))
+    
+    def __repr__(self):
+        return '{}: {}, [{}, {}]'.format(self.name, self.cardtype, self.attack, self.defense)
+
+    def copy(self):
+        return Card(self.name, self.attack, self.defense)
+
+
+
+
+# Q3: Making a Player
+class Player:
+    def __init__(self, deck, name):
+        self.deck = deck
+        self.name = name
+        self.hand = [x for x in deck]
+
+    def draw(self):
+        assert not self.deck.is_empty(), 'Deck is empty!'
+
+    def play(self, card_index):
+        pass
+
+# Cant get Deck class to work, import problems, etc
+
+
+
+
+
+# Q4: Link to list
+# Recursively
+def link_to_list(link):
+    total = []
+    def helper(link):
+        nonlocal total
+        if link.rest == Link.empty:
+            return [total.append(link.first)]
+        else: 
+            total.append(link.first)
+            helper(link.rest)
+        return total
+    return helper(link)
+
+link = Link(1, Link(2, Link(3, Link(4))))
+print(link_to_list(link))
+print(Link.empty)
+
+
+
+
+
+# Q5: Cumulative mul
