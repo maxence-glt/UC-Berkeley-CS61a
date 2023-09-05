@@ -30,7 +30,6 @@ class Tree:
             assert isinstance(b, Tree)
         self.label = label
         self.branches = list(branches)
-
     def is_leaf(self):
         return not self.branches
     def __repr__(self):
@@ -106,12 +105,19 @@ def link_to_list(link):
         return total
     return helper(link)
 
-link = Link(1, Link(2, Link(3, Link(4))))
-print(link_to_list(link))
-print(Link.empty)
-
 
 
 
 
 # Q5: Cumulative mul
+def cumulative_mul(t):
+    if t.is_leaf(): return t.label
+    for branch in t.branches:
+        t.label = t.label * cumulative_mul(branch)
+    return t.label
+
+
+
+
+
+# Would do optional questions if the provided M:TL code worked
