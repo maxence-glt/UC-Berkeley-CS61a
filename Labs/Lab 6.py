@@ -1,5 +1,5 @@
 # Lab 6 of UC Berkeley's cs61a spring 2020 course
-# https://inst.eecs.berkeley.edu/~cs61a/sp20/lab/lab01/
+# https://inst.eecs.berkeley.edu/~cs61a/sp20/lab/lab06/
 
 # Q1: Make Adder Increasing
 def make_adder_inc(n):
