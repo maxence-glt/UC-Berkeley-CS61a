@@ -126,3 +126,30 @@ class Keyboard:
 
 
 
+# Q7: Advanced Counter
+def make_advanced_counter_maker():
+    global_count = 0
+    def make_counter():
+        specific_count = 0
+        def specific_counter(identifier):
+            nonlocal global_count
+            nonlocal specific_count
+            if identifier == "count":
+                specific_count += 1
+                return specific_count
+            if identifier == "reset":
+                specific_count = 0
+                return
+            if identifier == "global-count":
+                global_count += 1
+                return global_count
+            if identifier == "global-reset":
+                global_count = 0
+                return
+        return specific_counter
+    return make_counter
+
+
+
+
+
