@@ -51,22 +51,78 @@ print(link)
 def insert_into_all(item, nested_list):
     return [[item] + x for x in nested_list]
 
+
+# attempt 1
 def subseqs(s):
     if s == []:
-        return []
+        return [[]]
     else:
-        list = insert_into_all(1,  [[] for _ in range(len(s))])
+        num = [[s[0]] + [x] for x in s[1:]]
+        return [[s[0]]] + num + subseqs(s[1:])
 
 
-seqs = subseqs([1, 2, 3])
-print(sorted(seqs))
-print(subseqs([]))
+# attempt 2 (correct)
+def subseqs(s):
+    if s == []:
+        return [[]]
+    else:
+        num = [[s[0]] + x for x in subseqs(s[1:])]
+        return num + subseqs(s[1:])
 
-# nl = [[], [1, 2], [3]]
-# print(insert_into_all(0, nl))
+# THIS ONE TOOK ME FOREVER
 
 
 
 
 
-# Q4
+# Q4: Increasing Subsequences
+def inc_subseqs(s):
+    def subseq_helper(s, prev):
+        if not s:
+            return [[]]
+        
+        elif s[0] < prev: 
+            return 
+
+    return subseq_helper(s, )
+
+
+
+
+
+# Q5: Generate Permutations
+def permutations(seq):
+    yield seq
+
+
+
+
+
+# Q6: Keyboard
+class Button:
+    def __init__(self, pos, key):
+        self.pos = pos
+        self.key = key
+        self.times_pressed = 0
+
+class Keyboard:
+    def __init__(self, *args):
+        self.buttons = {}
+        for key in args:
+            self.buttons[key.pos] = key
+    
+    def press(self, info):
+        if info > len(self.buttons) - 1:
+            return "''"
+        self.buttons[info].times_pressed += 1
+        return self.buttons[info].key
+    
+    def typing(self, typing_input):
+        out = ""
+        for index in typing_input:
+            out += Keyboard.press(self, index)
+        return out
+
+
+
+
