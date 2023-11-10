@@ -92,7 +92,12 @@ def inc_subseqs(s):
 
 # Q5: Generate Permutations
 def permutations(seq):
-    yield seq
+    if len(seq) <= 1:
+        yield seq
+    else:
+        for perm in seq:
+            for num in range(len(seq)):
+                permutations([perm] + [seq[num]])
 
 
 
@@ -153,3 +158,38 @@ def make_advanced_counter_maker():
 
 
 
+# Q8: Trade
+# def trade(first, second):
+    # m, n = 1, 1
+
+    # equal_prefix = lambda: first == second
+    # while :
+    #     if :
+    #         m += 1
+    #     else:
+    #         n += 1
+
+    # if equal_prefix():
+    #     first[:m], second[:n] = second[:n], first[:m]
+    #     return 'Deal!'
+    # else:
+    #     return 'No deal!'
+
+a = [1, 1, 3, 2, 1, 1, 4]
+b = [4, 3, 2, 7]
+trade(a, b)
+print(a)
+print(b)
+
+
+
+
+
+# Q10: Deep Linked List Length
+def deep_len(lnk):
+    if lnk.first.rest is not Link.empty:
+        return 0
+    elif lnk.rest is Link.empty:
+        return 1
+    else: 
+        return sum([1 for x in lnk.first]) + deep_len(lnk.rest)
