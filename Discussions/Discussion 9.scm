@@ -49,3 +49,13 @@
         ((= n 0) 0)
         (else (+ (fib (- n 1))
                  (fib (- n 2))))))
+
+
+
+
+
+; 5.1
+(define (my-append a b)
+  (if (null? a)
+      b
+      (cons (car a) (my-append (cdr a) b))))
