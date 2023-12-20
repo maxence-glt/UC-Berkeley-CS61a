@@ -16,7 +16,12 @@ def choose(paragraphs, select, k):
     the empty string.
     """
     # BEGIN PROBLEM 1
-    "*** YOUR CODE HERE ***"
+    paragraphs = [x for x in paragraphs if select(x)]
+    
+    if k > len(paragraphs): 
+        return ''
+    
+    return paragraphs[k]
     # END PROBLEM 1
 
 
@@ -32,7 +37,13 @@ def about(topic):
     """
     assert all([lower(x) == x for x in topic]), 'topics should be lowercase.'
     # BEGIN PROBLEM 2
-    "*** YOUR CODE HERE ***"
+    def helper(sentence):
+        sentence = lower(sentence)
+        for word in topic:
+            if word in sentence:
+                return True
+        return False
+    return helper
     # END PROBLEM 2
 
 
@@ -56,7 +67,20 @@ def accuracy(typed, reference):
     typed_words = split(typed)
     reference_words = split(reference)
     # BEGIN PROBLEM 3
-    "*** YOUR CODE HERE ***"
+    total_correct = 0.0
+    total = len(reference_words)
+
+    if len(typed_words) == 0:
+        return total
+        
+    for word in range(len(typed_words)):
+        if word > len(reference_words) - 1:
+            total += 1
+
+        elif typed_words[word] == reference_words[word]:
+            total_correct += 1
+
+    return (total_correct / total)
     # END PROBLEM 3
 
 
@@ -64,7 +88,7 @@ def wpm(typed, elapsed):
     """Return the words-per-minute (WPM) of the TYPED string."""
     assert elapsed > 0, 'Elapsed time must be positive'
     # BEGIN PROBLEM 4
-    "*** YOUR CODE HERE ***"
+    return (len(typed) / 5) / elapsed * 60
     # END PROBLEM 4
 
 
@@ -74,7 +98,7 @@ def autocorrect(user_word, valid_words, diff_function, limit):
     than LIMIT.
     """
     # BEGIN PROBLEM 5
-    "*** YOUR CODE HERE ***"
+    
     # END PROBLEM 5
 
 
