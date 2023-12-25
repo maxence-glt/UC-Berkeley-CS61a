@@ -1,3 +1,7 @@
+-- Lab 11 of UC Berkeley's cs61a spring 2020 course
+-- https://inst.eecs.berkeley.edu/~cs61a/sp20/lab/lab11/
+
+
 CREATE TABLE students AS
    SELECT "4/8/2020 21:20:14" AS time, 44 AS number, "crayon" AS color, "the number 7 below." AS seven, "Clair de Lune by Claude Debussy" as song, "1/2" as date, "koala" as pet, "Image 1" AS instructor, 23 AS smallest UNION
    SELECT "4/8/2020 21:20:40"          , 69          , "blue"                     , "seven"                     , "Smells like Teen Spirit"  , "2/9"  , "tree frog"                                                                            , "Image 3", 7                     UNION
